@@ -99,7 +99,7 @@ int * uniao(int *x1, int *x2, int n1, int n2, int *qtd){
             (*qtd)++;
         }
     }
-
+    ptr = (int *) realloc(ptr, (*qtd) * sizeof(int));
     return ptr;
 }
 
