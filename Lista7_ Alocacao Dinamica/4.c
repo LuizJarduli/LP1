@@ -14,7 +14,8 @@
 */
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM 5
+#define N1 5
+#define N2 5
 
 int * interseccao(int *x1, int *x2, int n1, int n2, int *qtd);
 void imprimirConjunto(int *x, int tam);
@@ -22,10 +23,10 @@ void liberarMemoria(int *ptr);
 
 int main(){
 
-    int x1[TAM] = {1,3,5,6,7}, x2[TAM] = {1,3,4,6,8}, *x3, qtd, n1, n2;
+    int x1[N1] = {1,3,5,6,7}, x2[N2] = {1,3,4,6,8}, *x3, qtd, n1, n2;
 
-    n1 = TAM;
-    n2 = TAM;
+    n1 = N1;
+    n2 = N2;
     qtd = 0;
 
     printf("conjunto x1 = ");
