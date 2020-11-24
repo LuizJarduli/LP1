@@ -24,7 +24,7 @@ int main(){
 
 
     Contato *contato;
-    int i = 1, menu;
+    int i = 0, menu;
     contato = (Contato *) malloc(sizeof(Contato));
     while(menu != 6){
         imprimeCabecalho();
@@ -33,7 +33,7 @@ int main(){
         switch(menu){
         //opcao 7 se quiser listar
         case 7:
-            listarContatos(contato, i-1);
+            listarContatos(contato, i);
             break;
         case 6:
             printf("\nSair\n");
@@ -57,11 +57,10 @@ int main(){
             break;
         case 1:
             printf("Cadastrar um novo contato\n\n");
-            if(i == 0) contato = (Contato *) realloc(contato, 1 * sizeof(Contato));
-            inserirContato(contato, i);
-            listarContatos(contato,i);
             i++;
             contato = (Contato *) realloc(contato, i * sizeof(Contato));
+            inserirContato(contato, i);
+            listarContatos(contato,i);
             if(!contato){
                 printf("\nErro ao realocar memoria! Tente novamente");
                 free(contato);
@@ -144,7 +143,7 @@ void excluirContato(Contato *ptr, int *tam){
                     }
                 }
                 printf("Registro excluido com sucesso!\n\n");
-                listarContatos(ptr, *(tam)-1);
+                listarContatos(ptr, *tam);
             } else if(resp == 'N' || resp == 'n'){
                 printf("\nOperacao Abortada!\n\n");
                 return;
