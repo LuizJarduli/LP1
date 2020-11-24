@@ -100,7 +100,7 @@ void listarContatos(Contato *ptr, int tam){
 }
 
 void excluirContato(Contato *ptr, int *tam){
-    if(*tam <= 1){
+    if(*tam < 1){
         printf("\nVoce nao possui nenhum contato registrado.\n\n");
     } else {
         char resp;
