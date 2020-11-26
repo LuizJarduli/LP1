@@ -19,6 +19,7 @@ void pesquisarPorEmail(Contato *ptr, int tam);
 void pesquisarPorCodigo(Contato *ptr, int tam);
 void alterarDados(Contato *ptr, int tam);
 void excluirContato(Contato *ptr, int *tam);
+int ChecaCodigoRep(Contato *ptr, int cod, int tam);
 
 int main(){
 
@@ -279,9 +280,15 @@ void pesquisarPorEmail(Contato *ptr, int tam){
 void inserirContato(Contato *ptr, int tam){
 
     getchar();
+    int tempCod;
     printf("Informe o Codigo: ");
-    scanf("%d", &ptr[tam-1].codigo);
+    scanf("%d", &tempCod);
+    while(ChecaCodigoRep(ptr,tempCod,tam) == 1){
+        printf("Informe o Codigo: ");
+        scanf("%d", &tempCod);
+    }
     flush_in();
+    ptr[tam-1].codigo = tempCod;
 
     printf("Informe o nome: ");
     gets(ptr[tam-1].nome);
@@ -311,4 +318,15 @@ void flush_in(){
 
 void limparMemoria(Contato *ptr){
     free(ptr);
+}
+
+int ChecaCodigoRep(Contato *ptr, int cod, int tam){
+    int i;
+    for(i = 0; i < tam; i++){
+        if(cod == ptr[i].codigo) {
+            printf("O codigo digitado ja consta em outro registro! Tente Novamente!\n");
+            return 1;
+        }
+    }
+    return 0;
 }
