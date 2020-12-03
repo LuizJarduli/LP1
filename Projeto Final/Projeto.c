@@ -71,6 +71,7 @@ int main(){
             break;
         default:
             printf("Escolha uma opcao valida!\n");
+            flush_in();
             break;
 
         }
